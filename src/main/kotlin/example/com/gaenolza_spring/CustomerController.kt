@@ -1,5 +1,7 @@
 package example.com.gaenolza_spring
 
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -17,8 +19,23 @@ class CustomerController(private val customerRepository: CustomerRepository) {
         return customerRepository.findAll()
     }
 
-    @GetMapping("/find/{customerId}")
+    @GetMapping("/find/id/{customerId}")
     fun findCustomerByCustomerId(@PathVariable customerId: Int): Customer? {
         return customerRepository.findCustomerByCustomerId(customerId)
+    }
+
+    @GetMapping("/find/name/{customerName}")
+    fun findCustomerByCustomerName(@PathVariable customerName: String): Customer? {
+        return customerRepository.findCustomerByCustomerName(customerName)
+    }
+
+    @PostMapping("/login")
+    fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<Any> {
+        val customer = customerRepository.findCustomerByCustomerName(loginRequest.customerName)
+        return if (customer != null && customer.password == loginRequest.password) {
+            ResponseEntity.ok("Login successful")
+        } else {
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials")
+        }
     }
 }
