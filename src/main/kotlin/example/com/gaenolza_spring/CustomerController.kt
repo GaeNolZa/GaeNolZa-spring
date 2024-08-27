@@ -3,7 +3,9 @@ package example.com.gaenolza_spring
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping("/customer")
 class CustomerController(private val customerRepository: CustomerRepository) {
+
     @PostMapping("/add")
     fun addCustomer(@RequestBody customer: Customer): String {
         customerRepository.save(customer)
