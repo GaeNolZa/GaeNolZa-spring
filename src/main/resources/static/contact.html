@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개놀자</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #FF5A60;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info {
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-bottom: 40px; /* 연락처와 FAQ 항목 사이에 여백 추가 */
+        }
+        .contact-info h3 {
+            margin-top: 0;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            margin: 0;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .faq-answer {
+            margin: 0;
+            padding: 15px;
+            display: none;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>개놀자</h1>
+</header>
+
+<nav>
+    <a href="home">홈</a>
+    <a href="about">소개</a>
+    <a href="services">서비스</a>
+    <a href="contact">연락처</a>
+</nav>
+
+<div class="faq-container">
+    <div class="contact-info">
+        <h3>고객센터 연락처</h3>
+        <p>전화번호: 1234-5678</p>
+        <p>운영 시간: 09:00 - 18:00 (주말 및 공휴일 제외)</p>
+        <p>이메일: support@gaenolza.com</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Q1: 서비스 이용 방법은?</div>
+        <div class="faq-answer">서비스를 이용하려면 먼저 회원가입을 하고, 원하는 숙소를 검색한 후 예약을 진행하시면 됩니다.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">Q2: 결제는 어떻게 하나요?</div>
+        <div class="faq-answer">결제는 신용카드, 체크카드, 간편결제 등 다양한 방법으로 가능합니다.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">Q3: 예약 취소는 어떻게 하나요?</div>
+        <div class="faq-answer">예약 취소는 '내 예약' 페이지에서 직접 취소가 가능합니다. 취소 정책에 따라 수수료가 발생할 수 있습니다.</div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 개놀자</p>
+</footer>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+            const faqItem = item.parentElement;
+            faqItem.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>
