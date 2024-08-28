@@ -12,5 +12,6 @@ data class Customer(
     var customerId: Int = 0,
     var customerName: String = "",
     var phoneNumber: String = "",
-    var password: String = ""
+    var password: String = "",
+    var email: String = ""
 )

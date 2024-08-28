@@ -29,9 +29,14 @@ class CustomerController(private val customerRepository: CustomerRepository) {
         return customerRepository.findCustomerByCustomerName(customerName)
     }
 
+    @GetMapping("/find/email/{email}")
+    fun findCustomerByEmail(@PathVariable email: String): Customer? {
+        return customerRepository.findCustomerByEmail(email)
+    }
+
     @PostMapping("/login")
     fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<Any> {
-        val customer = customerRepository.findCustomerByCustomerName(loginRequest.customerName)
+        val customer = customerRepository.findCustomerByEmail(loginRequest.email)
         return if (customer != null && customer.password == loginRequest.password) {
             ResponseEntity.ok("Login successful")
         } else {
