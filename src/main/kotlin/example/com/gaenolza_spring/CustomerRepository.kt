@@ -6,9 +6,10 @@ interface CustomerRepository : CrudRepository<Customer, Int> {
 
     fun findCustomerByCustomerId(customerId: Int): Customer?
     fun findCustomerByCustomerName(customerName: String): Customer?
+    fun findCustomerByEmail(email: String): Customer?
 }
 
 data class LoginRequest(
-    val customerName: String,
+    val email: String,
     val password: String
 )
