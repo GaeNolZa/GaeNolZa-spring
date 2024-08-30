@@ -22,7 +22,7 @@ class AnimalController(private val animalRepository: AnimalRepository) {
         return animalRepository.findAll()
     }
 
-    @GetMapping("/find/id/{customerId}")
+    @GetMapping("/list/id/{customerId}")
     fun findAnimalsByCustomerId(@PathVariable customerId: Int): List<Animal> {
         return animalRepository.findAnimalsByCustomerId(customerId)
     }
