@@ -1,10 +1,6 @@
 package example.com.gaenolza_spring.facility
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/facility")
@@ -19,5 +15,10 @@ class FacilityController(private val facilityRepository: FacilityRepository) {
     fun addFacility(@RequestBody facility: Facility): String {
         facilityRepository.save(facility)
         return "Added new facility to repo"
+    }
+
+    @GetMapping("/search")
+    fun searchFacilitiesByName(@RequestParam name: String): List<Facility> {
+        return facilityRepository.findByFacilityNameContaining(name)
     }
 }
