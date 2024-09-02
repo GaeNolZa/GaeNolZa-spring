@@ -21,4 +21,9 @@ class FacilityController(private val facilityRepository: FacilityRepository) {
     fun searchFacilitiesByName(@RequestParam name: String): List<Facility> {
         return facilityRepository.findByFacilityNameContaining(name)
     }
+
+    @GetMapping("/find/id/{facilityId}")
+    fun findFacilityByFacilityId(@PathVariable facilityId: Int): Facility? {
+        return facilityRepository.findFacilityByFacilityId(facilityId)
+    }
 }
